@@ -1,0 +1,689 @@
+21
+AT Austria EUR
+BE Belgium EUR
+BY Belarus BYN
+CH Switzerland CHF
+CZ CzechRepublic CZK
+DE Germany EUR
+DK Denmark DKK
+FR France EUR
+HR Croatia HR
+HU Hungary HUF
+IT Italy EUR
+LI Lichtenstein CHF
+LT Lithuania EUR
+LU Luxembourg EUR
+NL Netherland EUR
+RO Romania RON
+RS Serbia RSD
+PL Poland PLN
+SI Slovenia EUR
+SK Slovakia EUR
+UA Ukraine UAH
+233
+Bregenz AT 329 482
+Eisenstadt AT 641 464
+Graz AT 588 508
+Innsbruck AT 405 496
+Klagenfurt AT 538 534
+Linz AT 538 435
+Salzburg AT 479 465
+Vienna AT 634 442
+WienerNeustadt AT 628 465
+Antwerpen BE 82 260
+Arion BE 146 354
+Brugge BE 27 260
+Brussels BE 78 284
+Charleroi BE 83 309
+Gent BE 49 272
+Hasselt BE 131 276
+Liege BE 135 296
+Maastricht BE 139 283
+Namur BE 103 306
+Brest BY 973 207
+Hrodna BY 979 108
+Aarau CH 249 490
+Altdorf CH 277 520
+Basel CH 228 478
+Bern CH 223 518
+Biel CH 212 503
+Chur CH 316 521
+Delemont CH 217 491
+Frauenfeld CH 298 480
+Fribourg CH 208 525
+Geneva CH 166 558
+Glarus CH 297 510
+Herisau CH 306 489
+Lausanne CH 185 540
+Liestal CH 235 485
+Lugano CH 291 571
+Luzern CH 260 509
+Neuchatel CH 197 514
+Sarnen CH 259 519
+Schaffhausen CH 276 472
+Splothurn CH 226 500
+Zug CH 270 502
+Zurich CH 273 490
+Brno CZ 645 382
+CeskeBudejovice CZ 546 396
+HradecKralove CZ 608 322
+Liberec CZ 574 287
+Olomouc CZ 674 356
+Ostrava CZ 721 345
+Pardubice CZ 606 333
+Plzen CZ 495 350
+Prague CZ 546 329
+UstiNadLabem CZ 529 294
+Zlin CZ 693 379
+Augsburg DE 381 433
+Berlin DE 496 180
+Bielefeld DE 271 211 
+Bonn DE 205 290
+Braunschweig DE 363 198
+Bremen DE 284 145
+Bremerhaven DE 274 117
+Coburg DE 384 319
+Cologne DE 199 279
+Cottbus DE 540 227
+Ctiemniz DE 474 284
+Duisburg DE 190 248 
+Dusseldorf DE 191 261
+Dortmund DE 223 242
+Dresden DE 513 272
+Emden DE 211 128
+Essen DE 202 246
+Flensburg DE 314 38
+Frankfurt DE 279 328
+Freiburg DE 241 454
+Furth DE 385 367
+Gera DE 435 283
+Giessen DE 277 300
+Gottingen DE 336 243
+Hamburg DE 340 116
+Hannover DE 326 190
+Heidelberg DE 279 370
+Hof DE 428 315
+Ingolstadt DE 406 408
+Jena DE 412 279
+Karlsruhe DE 266 395
+Kassel DE 317 256
+Kiel DE 345 67
+Koblenz DE 229 314
+Leipzig DE 450 254
+Lubeck DE 370 96
+Magdeburg DE 414 205
+Mainz DE 259 336
+Mannheim DE 269 365
+Munich DE 412 446
+Munster DE 230 215
+Nurnberg DE 391 368
+Oldenburg DE 257 142
+Osnabruck DE 250 195
+Passau DE 499 421
+Potsdam DE 481 189
+Regensburg DE 437 394
+Rosenheim DE 438 463
+Rostock DE 439 84
+Saarbrucken DE 200 380
+Schwerin DE 405 110
+Stralsund DE 483 69
+Stuttgart DE 303 408
+Ulm DE 340 431
+Wiesbaden DE 259 330
+Wuppertal DE 210 259
+Wurzburg DE 337 347
+Svendborg DK 368 19
+Annecy FR 161 577
+Auxerre FR 43 466
+Besancon FR 156 499
+ClermontFerrand FR 20 583
+Dijon FR 110 494
+Lille FR 21 295
+Lyon FR 101 583
+Melun FR 2 422
+Metz FR 163 387
+Mulhouse FR 217 469
+Nancy FR 164 413
+Nevers FR 24 513
+Reims FR 64 380
+Roanne FR 66 569
+SaintEtienne FR 81 603
+Strasbourg FR 235 420
+Troyes FR 67 435
+Vichy FR 36 564
+Karlovac HR 596 600
+Rijeka HR 546 609
+Osijek HR 740 596
+Zagreb HR 617 581
+Bekescsaba HU 852 532
+Budapest HU 759 481
+Debrecen HU 876 482
+Eger HU 819 460
+Gyor HU 691 472
+Kaposvar HU 699 549
+Kecskemet HU 787 518
+Pecs HU 720 566 
+Miskolc HU 837 449
+Nyiregyhaza HU 879 457
+Salgotarjan HU 793 448
+Szekesfehervar HU 728 501
+Szekszard HU 742 551
+Szolnok HU 809 502
+Szombathely HU 645 499
+Szeged HU 808 556
+Tatabanya HU 729 480
+Vac HU 762 467
+Veszprem HU 705 505
+Zatagerszeg HU 655 522
+Aosta IT 216 585
+Bergamo IT 324 588
+Bolzano IT 402 542
+Como IT 297 581
+Novara IT 276 603
+Trento IT 391 566
+Treviso IT 443 590
+Udine IT 489 566
+Venice IT 448 603
+Vercha IT 385 603
+Vaduz LI 317 506
+Kaurias LT 980 27
+Diekrich LU 162 342
+Grevenmacher LU 170 353
+Luxemburg LU 161 357
+Amsterdam NL 105 192
+Arnhem NL 151 213
+Assen NL 180 150
+Eindhoven NL 132 248
+Groningen NL 182 137
+Haarlem NL 91 189 
+Hague NL 75 208
+Hertogenbosch NL 123 232
+Leeuwarden NL 145 134
+Middelburg NL 45 243
+Rotterdam NL 85 217
+Utrecht NL 114 206
+Zwolle NL 160 181
+Bialystok PL 948 141
+Bydgoszcz PL 708 145
+Bytom PL 751 313
+Eiblag PL 774 77
+Elk PL 910 98
+Gdansk PL 739 64
+Gdynia PL 733 55
+Gliwice PL 741 315
+Grudziadz PL 744 121
+Inowroclaw PL 720 164
+Katowice PL 756 319
+Kielce PL 831 281
+Koszalin PL 626 75
+Krakow PL 798 332
+Lodz PL 775 227
+Lublin PL 920 258
+Olsztyn PL 823 100
+Opole PL 706 294
+Poznan PL 659 188
+Rzeszow PL 894 330
+Szczecin PL 549 124
+Warsaw PL 848 197
+Wroclaw PL 664 267
+ZelenaGora PL 593 216
+AlbaLulia RO 966 566
+Arad RO 862 561
+BaiaMare RO 967 474
+Bistrita RO 1009 504
+Deva RO 935 578
+Oradea RO 890 510
+SatuMare RO 934 467
+ClujNapoca RO 968 525
+Sibiu RO 992 582
+Temesvar RO 857 585
+TirguMures RO 1012 539
+Zalau RO 943 502
+NoviSad RS 794 614
+Subotica RS 786 566
+Zrenjanin RS 819 606
+Ljubljana SI 548 567
+Maribor SI 600 540
+Trieste SI 515 591
+BanskaBystrica SK 762 411
+Bratislava SK 669 446
+Kosice SK 858 411
+Presov SK 859 394
+Trnava SK 690 433
+Zilina SK 744 382
+Drohobych UA 963 374
+Lvov UA 988 345
+Uzhgorod UA 905 418
+432
+Sibiu AlbaLulia 90
+Sibiu TirguMures 90
+AlbaLulia Deva 90
+Deva Temesvar 90
+Temesvar Arad 90
+Temesvar Zrenjanin 90
+Zrenjanin NoviSad 90
+NoviSad Osijek 90
+Osijek Pecs 90
+Osijek Zagreb 90 
+Zagreb Maribor 90
+Zagreb Karlovac 90
+Karlovac Rijeka 90 
+Maribor Zatagerszeg 90
+Maribor Graz 90
+Rijeka Trieste 90
+Trieste Ljubljana 90
+Klagenfurt Ljubljana 90
+Klagenfurt Udine 90
+Klagenfurt Graz 90
+Ljubljana Maribor 90
+Graz Szombathely 90
+Zagreb Kaposvar 90
+Kaposvar Pecs 90
+Pecs Szekszard 90
+Subotica Szekszard 90
+Subotica Szeged 90
+Arad Bekescsaba 90
+Bekescsaba Szolnok 90
+Szolnok Kecskemet 90
+Vac Budapest 90
+Budapest Tatabanya 90
+Budapest Szekesfehervar 90
+Szekesfehervar Veszprem 90
+Veszprem Tatabanya 90
+Gyor Tatabanya 90
+Gyor Szombathely 90
+Zatagerszeg Szombathely 90
+Zatagerszeg Kaposvar 90
+Oradea Zalau 90
+Oradea Debrecen 90
+Debrecen Bekescsaba 90
+Debrecen Nyiregyhaza 90
+Nyiregyhaza Uzhgorod 90
+SatuMare BaiaMare 90
+Zalau ClujNapoca 90
+ClujNapoca Bistrita 90
+Bistrita TirguMures 90
+BaiaMare Drohobych 90
+Drohobych Lvov 90
+Lvov Rzeszow 90
+Rzeszow Presov 90
+Presov Kosice 90
+Kosice Uzhgorod 90
+Kosice Miskolc 90
+Miskolc Eger 90
+Eger Salgotarjan 90
+Salgotarjan BanskaBystrica 90
+BanskaBystrica Trnava 90
+Trnava Bratislava 90
+Bratislava Gyor 90
+Bratislava Eisenstadt 90
+Eisenstadt WienerNeustadt 90
+WienerNeustadt Vienna 90
+WienerNeustadt Graz 90
+Klagenfurt Salzburg 90
+Salzburg Linz 90
+Linz Vienna 90
+Graz Linz 90
+Vienna Brno 90
+Brno Zlin 90
+Zlin Zilina 90
+Zilina BanskaBystrica 90
+BanskaBystrica Presov 90
+Uzhgorod Drohobych 90
+SatuMare Zalau 90
+BaiaMare Bistrita 90
+BaiaMare Zalau 90
+Bratislava Vienna 90
+Szekszard Kaposvar 90
+Oradea Deva 90
+Oradea Bekescsaba 90
+Szeged Kecskemet 90
+Szekszard Kecskemet 90
+Kecskemet Szekesfehervar 90
+Szolnok Eger 90
+Miskolc Nyiregyhaza 90
+Veszprem Gyor 90
+Veszprem Zatagerszeg 90
+Rijeka Ljubljana 90
+Udine Treviso 90
+Treviso Venice 90
+Venice Vercha 90
+Vercha Trento 90
+Trento Bolzano 90
+Bolzano Innsbruck 90
+Innsbruck Rosenheim 90
+Salzburg Rosenheim 90
+Trento Bergamo 90
+Bergamo Vercha 90
+Bergamo Como 90
+Como Novara 90
+Novara Aosta 90
+Aosta Annecy 90
+Innsbruck Bregenz 90
+Treviso Trento 90
+Bolzano Chur 90
+Lugano Como 90
+Lugano Chur 90
+Brno Bratislava 90
+Olomouc Zlin 90
+Ostrava Olomouc 90
+Ostrava Zilina 90
+Zilina Presov 90
+Zilina Krakow 90
+Zilina Katowice 90
+Salgotarjan Vac 90
+Budapest Szolnok 90
+Trnava Zlin 90
+Olomouc Brno 90
+Brno Prague 90
+Prague CeskeBudejovice 90
+CeskeBudejovice Plzen 90
+Plzen Regensburg 90
+Subotica Zrenjanin 90
+Arad Szeged 90
+Szeged Bekescsaba 90
+Szekesfehervar Kaposvar 90
+Pardubice HradecKralove 90
+Pardubice Prague 90
+Prague UstiNadLabem 90
+UstiNadLabem Liberec 90
+Prague Liberec 90
+Liberec Wroclaw 90
+Wroclaw Opole 90
+Opole Gliwice 90
+Gliwice Ostrava 90
+Gliwice Bytom 90
+Bytom Katowice 90
+Katowice Krakow 90
+Krakow Rzeszow 90
+Rzeszow Lublin 90
+Lublin Brest 90
+Brest Hrodna 90
+Hrodna Kaurias 90
+Kaurias Elk 90
+Elk Hrodna 90
+Elk Olsztyn 90
+Olsztyn Grudziadz 90
+Grudziadz Gdansk 90
+Gdansk Gdynia 90
+Gdansk Koszalin 90
+Koszalin Szczecin 90
+Szczecin Berlin 90
+ZelenaGora Poznan 90
+Bydgoszcz Inowroclaw 90
+Inowroclaw Lodz 90
+Lodz Warsaw 90
+Warsaw Brest 90
+Warsaw Olsztyn 90
+Warsaw Kielce 90
+Hrodna Bialystok 90
+Bialystok Brest 90
+Bialystok Warsaw 90
+SatuMare Nyiregyhaza 90
+Krakow Kielce 90
+Kielce Lublin 90
+Lublin Warsaw 90
+Warsaw Elk 90
+Warsaw Bydgoszcz 90
+Bydgoszcz Grudziadz 90
+Bydgoszcz Koszalin 90
+Bydgoszcz Szczecin 90
+ZelenaGora Cottbus 90
+Cottbus Dresden 90
+Dresden UstiNadLabem 90
+Wroclaw ZelenaGora 90
+Wroclaw Lodz 90
+Kielce Lodz 90
+Opole HradecKralove 90
+HradecKralove Liberec 90
+Pardubice Olomouc 90
+Olomouc Opole 90
+Prague Plzen 90
+Prague Hof 90
+Klagenfurt Innsbruck 90
+Udine Bolzano 90
+Bregenz Vaduz 90
+Vaduz Chur 90
+Vaduz Glarus 90
+Vaduz Herisau 90
+Lugano Altdorf 90
+Katowice Lodz 90
+Poznan Inowroclaw 90
+Poznan Berlin 90
+Cottbus Berlin 90
+Berlin Potsdam 90
+Dresden Ctiemniz 90
+Ctiemniz Leipzig 90
+Ctiemniz Gera 90
+Jena Gera 90
+Gera Hof 90
+Leipzig Gera 90
+Leipzig Jena 90
+Jena Coburg 90
+Coburg Nurnberg 90
+Nurnberg Furth 90
+Nurnberg Regensburg 90
+Regensburg Ingolstadt 90
+Regensburg Passau 90
+CeskeBudejovice Passau 90
+CeskeBudejovice Linz 90
+Linz Passau 90
+Passau Munich 90
+Munich Augsburg 90
+Augsburg Ulm 90
+Ulm Stuttgart 90
+Stuttgart Karlsruhe 90
+Karlsruhe Heidelberg 90
+Heidelberg Mannheim 90
+Mannheim Frankfurt 90
+Frankfurt Giessen 90
+Giessen Kassel 90
+Kassel Gottingen 90
+Gottingen Hannover 90
+Hannover Braunschweig 90
+Braunschweig Magdeburg 90
+Magdeburg Potsdam 90
+Rzeszow Kielce 90
+Brno CeskeBudejovice 90
+Plzen Hof 90
+Leipzig Magdeburg 90
+Leipzig Potsdam 90
+Szczecin Stralsund 90
+Stralsund Rostock 90
+Rostock Schwerin 90
+Schwerin Lubeck 90
+Lubeck Hamburg 90
+Lubeck Kiel 90
+Kiel Flensburg 90
+Flensburg Svendborg 90
+Kiel Hamburg 90
+Hamburg Hannover 90
+Braunschweig Hannover 90
+Hamburg Bremen 90
+Hamburg Bremerhaven 90
+Bremerhaven Oldenburg 90
+Oldenburg Emden 90
+Emden Groningen 90
+Bremen Osnabruck 90
+Osnabruck Oldenburg 90
+Osnabruck Hannover 90
+Braunschweig Gottingen 90
+Gottingen Leipzig 90
+Coburg Wurzburg 90
+Wurzburg Frankfurt 90
+Wurzburg Heidelberg 90
+Wurzburg Furth 90
+Ingolstadt Nurnberg 90
+Ingolstadt Munich 90
+Ingolstadt Ulm 90
+Stuttgart Wurzburg 90
+Stuttgart Heidelberg 90
+Stuttgart Freiburg 90 
+Freiburg Schaffhausen 90
+Schaffhausen Frauenfeld 90
+Frauenfeld Herisau 90
+Herisau Zug 90
+Zug Glarus 90
+Glarus Altdorf 90
+Sarnen Altdorf 90
+Luzern Zug 90
+Luzern Aarau 90
+Herisau Zurich 90
+Zurich Liestal 90
+Liestal Basel 90
+Basel Mulhouse 90
+Liestal Aarau 90
+Aarau Zurich 90 
+Bern Sarnen 90
+Luzern Sarnen 90
+Fribourg Lausanne 90
+Lausanne Geneva 90
+Geneva Annecy 90
+Geneva Aosta 90
+Coburg Kassel 90
+Kassel Bielefeld 90
+Osnabruck Bielefeld 90
+Berlin Schwerin 90
+Berlin Hamburg 90
+Bremerhaven Bremen 90
+Bremen Hannover 90
+Bremen Oldenburg 90
+Emden Munster 90
+Munster Osnabruck 90
+Munster Essen 90
+Essen Dortmund 90
+Essen Wuppertal 90
+Essen Duisburg 90
+Duisburg Dusseldorf 90
+Dusseldorf Wuppertal 90
+Wuppertal Cologne 90
+Dusseldorf Cologne 90
+Cologne Bonn 90
+Bielefeld Dortmund 90
+Dortmund Kassel 90
+Cologne Diekrich 90
+Bonn Grevenmacher 90
+Diekrich Grevenmacher 90
+Luxemburg Grevenmacher 90
+Luxemburg Diekrich 90
+Luxemburg Arion 90
+Luxemburg Metz 90
+Metz Saarbrucken 90
+Saarbrucken Mannheim 90
+Saarbrucken Mainz 90
+Mainz Mannheim 90
+Mainz Wiesbaden 90
+Wiesbaden Frankfurt 90
+Mainz Frankfurt 90
+Wiesbaden Koblenz 90
+Bonn Koblenz 90
+Hof Coburg 90
+Brest Lvov 90
+Rosenheim Munich 90
+Innsbruck Ulm 90
+Bregenz Ulm 90
+Schaffhausen Ulm 90
+Koblenz Giessen 90
+Koblenz Grevenmacher 90
+Liberec Cottbus 90
+Hof Nurnberg 90
+Budapest Szekszard 90
+Debrecen Miskolc 90
+Uzhgorod SatuMare 90
+Munich Innsbruck 90
+Freiburg Mulhouse 90
+Bern Fribourg 90
+Annecy Lyon 90
+Geneva Lyon 90
+Lyon Roanne 90
+Lyon SaintEtienne 90
+SaintEtienne ClermontFerrand 90
+ClermontFerrand Vichy 90
+Vichy Nevers 90
+Vichy Roanne 90
+Lyon Besancon 90
+Besancon Fribourg 90
+Delemont Biel 90
+Biel Bern 90
+Biel Neuchatel 90
+Neuchatel Bern 90
+Splothurn Biel 90
+Splothurn Delemont 90
+Splothurn Aarau 90
+Delemont Liestal 90
+Herisau Zug 90
+Nancy Metz 90
+Nancy Strasbourg 90
+Strasbourg Freiburg 90
+Strasbourg Karlsruhe 90
+Metz Reims 90
+Reims Troyes 90
+Troyes Melun 90
+Melun Auxerre 90
+Fribourg Neuchatel 90
+Neuchatel Besancon 90
+Besancon Dijon 90
+Dijon Auxerre 90
+Auxerre Nevers 90
+Nevers Dijon 90
+Dijon Nancy 90
+Troyes Nancy 90
+Auxerre Troyes 90
+Melun Reims 90
+Melun Lille 90
+Reims Lille 90
+Eiblag Gdansk 90
+Eiblag Olsztyn 90
+Gdynia Koszalin 90
+Cottbus Leipzig 90
+Reims Charleroi 90
+Arion Charleroi 90
+Poznan Wroclaw 90
+Giessen Wuppertal 90
+Lille Gent 90
+Lille Brugge 90
+Brugge 90
+Gent Antwerpen 90
+Gent Brussels 90
+Antwerpen Brussels 90
+Hasselt Maastricht 90
+Hasselt Brussels 90
+Maastricht Liege 90
+Liege Namur 90
+Namur Charleroi 90
+Charleroi Brussels 90
+Hasselt Eindhoven 90
+Hasselt Dusseldorf 90
+Maastricht Cologne 90
+Eindhoven Antwerpen 90
+Antwerpen Middelburg 90
+Antwerpen Rotterdam 90
+Rotterdam Hague 90
+Hague Haarlem 90
+Haarlem Amsterdam 90
+Amsterdam Utrecht 90
+Utrecht Arnhem 90
+Utrecht Rotterdam 90
+Rotterdam Hertogenbosch 90
+Antwerpen Hertogenbosch 90
+Arnhem Essen 90
+Arnhem Zwolle 90
+Zwolle Assen 90
+Assen Munster 90
+Assen Groningen 90
+Groningen Leeuwarden 90
+Leeuwarden Zwolle 90
+Wuppertal Dortmund 90
+Eindhoven Hertogenbosch 90
+Hertogenbosch Arnhem 90
+Eindhoven Duisburg 90
+Gent Brugge 90
+Lille Charleroi 90
+Berlin Stralsund 90
+Mulhouse Besancon 90
+Diekrich Liege 90
+Strasbourg Saarbrucken 90
+ClujNapoca AlbaLulia 90
+Arad Oradea 90
+Presov Krakow 90
+Leipzig Dresden 90

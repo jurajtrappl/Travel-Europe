@@ -1,0 +1,11 @@
+C:\Users\jurot\Desktop\Travel-Europe\Travel-Europe\Travel-Europe\bin\Debug\Travel-Europe.exe.config
+C:\Users\jurot\Desktop\Travel-Europe\Travel-Europe\Travel-Europe\bin\Debug\Travel-Europe.exe
+C:\Users\jurot\Desktop\Travel-Europe\Travel-Europe\Travel-Europe\bin\Debug\Travel-Europe.pdb
+C:\Users\jurot\Desktop\Travel-Europe\Travel-Europe\Travel-Europe\obj\Debug\Travel-Europe.csprojAssemblyReference.cache
+C:\Users\jurot\Desktop\Travel-Europe\Travel-Europe\Travel-Europe\obj\Debug\Travel-Europe.csproj.GenerateResource.cache
+C:\Users\jurot\Desktop\Travel-Europe\Travel-Europe\Travel-Europe\obj\Debug\Travel-Europe.csproj.CoreCompileInputs.cache
+C:\Users\jurot\Desktop\Travel-Europe\Travel-Europe\Travel-Europe\obj\Debug\Travel-Europe.exe
+C:\Users\jurot\Desktop\Travel-Europe\Travel-Europe\Travel-Europe\obj\Debug\Travel-Europe.pdb
+C:\Users\jurot\Desktop\Travel-Europe\Travel-Europe\Travel-Europe\obj\Debug\TravelEurope.Settings.resources
+C:\Users\jurot\Desktop\Travel-Europe\Travel-Europe\Travel-Europe\obj\Debug\TravelEurope.TravelSimulation.resources
+C:\Users\jurot\Desktop\Travel-Europe\Travel-Europe\Travel-Europe\obj\Debug\TravelEurope.Properties.Resources.resources
