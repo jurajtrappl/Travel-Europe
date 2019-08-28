@@ -59,5 +59,64 @@ namespace TravelEurope.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 21
+        ///AT Austria EUR
+        ///BE Belgium EUR
+        ///BY Belarus BYN
+        ///CH Switzerland CHF
+        ///CZ CzechRepublic CZK
+        ///DE Germany EUR
+        ///DK Denmark DKK
+        ///FR France EUR
+        ///HR Croatia HR
+        ///HU Hungary HUF
+        ///IT Italy EUR
+        ///LI Lichtenstein CHF
+        ///LT Lithuania EUR
+        ///LU Luxembourg EUR
+        ///NL Netherland EUR
+        ///RO Romania RON
+        ///RS Serbia RSD
+        ///PL Poland PLN
+        ///SI Slovenia EUR
+        ///SK Slovakia EUR
+        ///UA Ukraine UAH
+        ///233
+        ///Bregenz AT 329 482
+        ///Eisenstadt AT 641 464
+        ///Graz AT 588 508
+        ///Innsbruck AT 405 496
+        ///Klagenfurt AT 538 534
+        ///Linz AT 538 435
+        ///Salzburg AT 479 465
+        ///Vienn [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string mapData {
+            get {
+                return ResourceManager.GetString("mapData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pin {
+            get {
+                object obj = ResourceManager.GetObject("pin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rsz_map {
+            get {
+                object obj = ResourceManager.GetObject("rsz_map", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

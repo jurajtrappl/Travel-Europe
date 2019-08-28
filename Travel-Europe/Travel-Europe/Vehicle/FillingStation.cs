@@ -25,7 +25,7 @@ namespace TravelEurope
         public FillingStation()
         {
             Price = 0;
-            Franchise = Franchise.noFranchise;
+            Franchise = ChooseFranchise();
         }
 
         public FillingStation(Franchise franchise)
@@ -64,32 +64,12 @@ namespace TravelEurope
             }
             return Price;
         }
+
         /// <summary>
         /// Computes the exchange rate according to €, assume card as payment method
         /// </summary>
         /// <param name="state"></param>
         /// <returns></returns>
-        //double SetExchangeRate(string countryCode)
-        //{
-        //    switch (countryCode)
-        //    {
-        //        case "CZ":
-        //            return 26.02;
-        //        case "HU":
-        //            return 329.77;
-        //        case "MD":
-        //            return 19.77;
-        //        case "PL":
-        //            return 4.37;
-        //        case "RO":
-        //            return 4.66;
-        //        case "UA":
-        //            return 30.87;
-        //        default:
-        //            return 1;
-        //    }
-        //}
-
         double SetExchangeRate(string countryCode)
         {
             var factory = Activator.CreateInstance(Type.GetType($"{countryCode}ExchangeRateFactory")) as IExchangeRateFactory;

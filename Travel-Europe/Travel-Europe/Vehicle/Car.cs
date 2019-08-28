@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace TravelEurope
@@ -23,7 +24,6 @@ namespace TravelEurope
         {
             FuelType = Fuel.none;
             TankCapacity = 0;
-            TankStatus = 0;
             Consumption = 0;
             MaxSpeed = 0;
         }
@@ -44,7 +44,6 @@ namespace TravelEurope
 
         public Fuel FuelType;
         public double TankCapacity;
-        public double TankStatus;
         public double Consumption;
         public int MaxSpeed;
 
@@ -54,33 +53,17 @@ namespace TravelEurope
         /// Refuel the tank of car
         /// </summary>
         /// <param name="city"></param>
-        public static void FillUpTheTank(FillingStation fStation, City city, RichTextBox output, TextBox input)
+        public static void CalculateFuel(RichTextBox output, List<City> path)
         {
-            Currency currency = city.Country.Currency;
-            string fuelType = (Instance.FuelType == Fuel.electro) ? "kWh" : "l";
+            int actualFuel = 0;
 
-            output.Text += Environment.NewLine + "We are at " + fStation.Franchise + " in " + city.Name +
-                ". The price is " + fStation.Price + currency.Code + "/" + fuelType;
+            Currency currAtStart = new Currency(path[0].Country.Code);
 
-            output.Text += Environment.NewLine + "Tank status is " + Car.Instance.TankStatus + fuelType +
-                ". Tank capacity is " + Car.Instance.TankCapacity + fuelType + "How much do you want to fill? (int)";
+            int distance = 0;
+            for(int i = 0; i < path.Count - 1; i++)
+            {
 
-            int fillAmount = int.Parse(input.Text);
-            //while (fillAmount <= 0 || fillAmount > Car.Instance.TankCapacity - Car.Instance.TankStatus)
-            //{
-            //    if (fillAmount <= 0)
-            //        output.Text += Environment.NewLine + "You have entered invalid value.";
-            //    else
-            //        output.Text += Environment.NewLine + "Tank capacity is not enough.";
-
-            //    fillAmount = Convert.ToInt32(input.text);
-            //}
-
-            double paid = fillAmount * fStation.Price;
-            output.Text += Environment.NewLine + "We have paid " + paid + currency.Code;
-            Instance.TankStatus += fillAmount;
-
-            output.Text += Environment.NewLine + "You have filled up " + fillAmount + fuelType + ", current tank status: " + Instance.TankStatus + fuelType;
+            }
         }
     }
 }

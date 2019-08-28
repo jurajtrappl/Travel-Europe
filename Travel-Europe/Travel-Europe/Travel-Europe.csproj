@@ -58,6 +58,8 @@
     <Compile Include="Forms\TravelSimulation.designer.cs">
       <DependentUpon>TravelSimulation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Path.cs" />
+    <Compile Include="Time.cs" />
     <Compile Include="Vehicle\Car.cs" />
     <Compile Include="Graph\City.cs" />
     <Compile Include="Graph\Country.cs" />
@@ -68,7 +70,7 @@
     <Compile Include="Graph\IDrawable.cs" />
     <Compile Include="Graph\Map.cs" />
     <Compile Include="Input\ParseMap.cs" />
-    <Compile Include="Algorhitms\Path.cs" />
+    <Compile Include="Algorhitms\Dijkstra.cs" />
     <Compile Include="Graph\Point.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -89,6 +91,7 @@
     <EmbeddedResource Include="Forms\TravelSimulation.resx">
       <DependentUpon>TravelSimulation.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="bin\Debug\images\background.img" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -101,6 +104,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\images\rsz_map.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MapData.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\inputData\mapData.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pin.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\images\pin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\images\pinn.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

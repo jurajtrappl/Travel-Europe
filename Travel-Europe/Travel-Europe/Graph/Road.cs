@@ -33,15 +33,15 @@ namespace TravelEurope
             Point stPoint = StartCity.Location;
             Point endPoint = DestinationCity.Location;
 
-            g.DrawLine(lineColor, stPoint.GetX(), stPoint.GetY(), endPoint.GetX(), endPoint.GetY());
+            g.DrawLine(lineColor, stPoint.X, stPoint.Y, endPoint.X, endPoint.Y);
         }
 
         int AssignDistance(City startCity, City destinationCity)
         {
-            int sx = startCity.Location.GetX();
-            int sy = startCity.Location.GetY();
-            int dx = destinationCity.Location.GetX();
-            int dy = destinationCity.Location.GetY();
+            int sx = startCity.Location.X;
+            int sy = startCity.Location.Y;
+            int dx = destinationCity.Location.X;
+            int dy = destinationCity.Location.Y;
 
             return CalculateDistance(sx, sy, dx, dy);
         }

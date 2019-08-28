@@ -10,9 +10,6 @@ namespace TravelEurope
         static readonly string City = @"(?<Name>[A-Za-z]*) (?<CountryCode>[A-Z]*) (?<XCoord>\d+) (?<YCoord>\d+)";
         static readonly string Road = @"(?<StartCity>[A-Za-z]*) (?<DestinationCity>[A-Za-z]*) (?<MaxAllowedSpeed>\d+)";
 
-        //global counter
-        static int Counter = 0;
-
         //stuff for regex pattern matching
         static MatchCollection M;
 
@@ -23,6 +20,8 @@ namespace TravelEurope
         /// <returns>Map created from the input textfile</returns>
         public static Map ParseInput(string[] inputLines)
         {
+            int Counter = 0;
+
             //creates a new map
             Map map = new Map();
 

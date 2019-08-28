@@ -1,66 +1,50 @@
-﻿using System;
+﻿using System.IO;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using System;
 
 namespace TravelEurope
 {
     public partial class TravelSimulation : Form
     {
-        #region Instance variables
-        
-        List<City> path;
-        bool yesClicked = false;
+        //path stuff
+        static Map map;
+        City startCity;
+        City destinationCity;
+        Queue<City> cityBetween;
+        //graphic stuff
+        static Bitmap drawMap;
+        static Graphics graphics;
 
-        #endregion
-
-        public TravelSimulation(Map map, City startCity, City endCity)
+        public TravelSimulation()
         {
             InitializeComponent();
-           
-            textBox1.Text = "0";
 
-            Bitmap mapDraw = new Bitmap(pictureBox1.Size.Width, pictureBox1.Size.Height);
-            Graphics g = Graphics.FromImage(mapDraw);
-            //cities
-            foreach (City c in map.Cities.Values)
-            {
-                c.Draw(g, Color.Black);
-            }
+            //CREATE A MAP
+            //parse the input file and load data to the map
+            string[] inputLines = File.ReadAllLines("inputData/mapData.txt");
+            map = ParseMap.ParseInput(inputLines);
 
-            //find the path
-            path = Path.GetPath(map, startCity, endCity);
+            //settings for output (logs)
+            output.WordWrap = true;
+            output.ReadOnly = true;
+            output.ScrollBars = RichTextBoxScrollBars.Both;
+            output.Font = new Font("Sitka Banner", 15, FontStyle.Bold);
+            output.MaxLength = 50;
 
-            //show the path plan
-            PrepareSimulation(map);
+            //settings for refilling
+            string fuelType = (Car.Instance.FuelType == Fuel.electro) ? " kWh" : " l";
+            textBox1.Text = "0  " + fuelType;
 
-            //draw road between cities on the path
-            DrawRoads(g, path);
+            //graphics
+            drawMap = new Bitmap(pictureBox1.Size.Width, pictureBox1.Size.Height);
+            graphics = Graphics.FromImage(drawMap);
+            pictureBox1.Image = drawMap;
 
-            //DrawAllRoads(g, map);
-
-            pictureBox1.Image = mapDraw;
-        }
-
-        void TravelSimulation_Load(object sender, EventArgs e)
-        {
-            //settings for rich text box (logs)
-            richTextBox1.WordWrap = true;
-            richTextBox1.ReadOnly = true;
-            richTextBox1.ScrollBars = RichTextBoxScrollBars.Both;
-            richTextBox1.Font = new Font("Sitka Banner", 15, FontStyle.Bold);
-            richTextBox1.MaxLength = 50;
-        }
-
-        void DrawAllRoads(Graphics g, Map map)
-        {
-            foreach(City c in map.Cities.Values)
-            {
-                foreach(Road r in c.Roads)
-                {
-                    r.Draw(g, Color.IndianRed);
-                }
-            }
+            startCity = null;
+            destinationCity = null;
+            cityBetween = new Queue<City>();
         }
 
         //Draw roads on the path
@@ -79,166 +63,201 @@ namespace TravelEurope
             }
         }
 
-        /// <summary>
-        /// Prints the cities in the given shortest path between two cities
-        /// </summary>
-        /// <param name="path">Cities</param>
-        void PrintPath(List<City> path)
+        private void Simulate(object sender, EventArgs e)
         {
-            for (int i = 0; i < path.Count; i++)
+            if(startCity == null || destinationCity == null)
             {
-                richTextBox1.Text += Environment.NewLine + path[i].Name;
-                if (i != path.Count - 1)
-                    richTextBox1.Text += " -> ";
+                output.Text += "Pick cities first.";
+            }
+            else if (startCity != null && destinationCity == null)
+            {
+                output.Text += "You have picked only starting city.";
+            }
+            else if (startCity == null && destinationCity != null)
+            {
+                startCity = destinationCity;
+                destinationCity = null;
+                output.Text += "You have picked only starting city.";
+            }
+            else
+            {
+                ResetOutput();
+
+                //find the new path
+                Path path = new Path(map, startCity, destinationCity, cityBetween);
+
+                //show the path plan
+                path.PathSummary(output);
+
+                //calculate the possible refueling
+                Car.CalculateFuel(output, path.TravelPath);
+
+                //draw road between cities on the path
+                DrawRoads(graphics, path.TravelPath);
+
+                pictureBox1.Image = drawMap;
             }
         }
 
-        /// <summary>
-        /// Prints the travel summary
-        /// </summary>
-        /// <param name="path"></param>
-        void TravelPlan(List<City> path)
+        private void AddCity(MouseEventArgs e)
         {
-            for (int i = 0; i < path.Count - 1; i++)
+            foreach(var city in map.Cities.Values)
             {
-                Road current = Map.FindTheRoad(path[i], path[i + 1]);
-                richTextBox1.Text += Environment.NewLine + path[i].Name + " -> " + path[i + 1].Name + ": " + current.Distance + "km";
+                if (city.Contains(e.X, e.Y))
+                    cityBetween.Enqueue(city);
             }
         }
 
-        //design additions
-        string Line() => "----------------------------------------------------";
-        void WordAnimation()
+        private void SelectCity(MouseEventArgs e)
         {
-            richTextBox1.Text += Environment.NewLine + Line();
-            richTextBox1.Text += Environment.NewLine + "     ...Travelling...";
-            richTextBox1.Text += Environment.NewLine + Line();
-        }
-
-        public void PrepareSimulation(Map map)
-        {
-            richTextBox1.Text += "Trip from " + path[0].Name.ToUpper() + " to " + path[path.Count-1].Name.ToUpper();
-            richTextBox1.Text += Environment.NewLine + Line();
-
-            //FIND THE SHORTEST PATH
-            richTextBox1.Text += Environment.NewLine + "Cities to go through:";
-
-            //SHOW THE PATH
-            PrintPath(path);
-            richTextBox1.Text += Environment.NewLine + Line();
-
-            //CALCULATIONS
-            //calculates the distance between the start and destination citiy
-            richTextBox1.Text += Environment.NewLine + "Total distance to travel: " + map.DistanceToTravel(path) + "km";
-            //calculates the duration of travelling
-            richTextBox1.Text += Environment.NewLine + "Overall duration: " + map.TotalDuration(path) + "h";
-
-            //travel summary
-            TravelPlan(path);
-            richTextBox1.Text += Environment.NewLine + Line();
-        }
-
-        void YesButton(object sender, EventArgs e) => yesClicked = true;
-
-        /// <summary>
-        /// Simulates the road travelling
-        /// </summary>
-        /// <param name="path"></param>
-        void Simulation(List<City> path)
-        {
-            FillingStation fillingStation = new FillingStation();
-
-            richTextBox1.Text += Environment.NewLine + "Do you wish to fill up the tank?   (Yes/No)";
-            if(yesClicked)
+            foreach (var city in map.Cities.Values)
             {
-                Franchise Franchise = FillingStation.ChooseFranchise();
-                fillingStation = new FillingStation(Franchise);
-                fillingStation.SetPrice(path[0]);
-                Car.FillUpTheTank(fillingStation, path[0], richTextBox1, textBox1);
-                yesClicked = false;
-            }
-
-            double remaining = 0;
-            double neededFuel = 0;
-            for (int i = 0; i < path.Count - 1; i++)
-            {
-                WordAnimation();
-                Road current = Map.FindTheRoad(path[i], path[i + 1]);
-                richTextBox1.Text += Environment.NewLine + "Current path: " + path[i].Name + " -> " + path[i + 1].Name + " distance " + current.Distance + " km";
-                richTextBox1.Text += Environment.NewLine + "Duration: " + Map.Duration(path[i], path[i + 1]) + "h";
-
-                if (path[i].Country != path[i + 1].Country)
-                    richTextBox1.Text += Environment.NewLine + "You have crossed the state borders between " + path[i].Country.Code + " and " + path[i + 1].Country.Code;
-
-                switch (Car.Instance.FuelType)
+                if (city.Contains(e.X, e.Y))
                 {
-                    case Fuel.gas:
-                        neededFuel = ((current.Distance / (double)100) + 1) * Car.Instance.Consumption;
-                        richTextBox1.Text += Environment.NewLine + "On the road we consume: " + neededFuel + "l";
-                        remaining = (int)Car.Instance.TankStatus - neededFuel;
-                        if (remaining <= 0)
+                    //add cities
+
+                    if (city == startCity)
+                    {
+                        if(cityBetween.Count > 0)
                         {
-                            double minimalfillAmount = neededFuel - (int)Car.Instance.TankStatus;
-                            richTextBox1.Text += Environment.NewLine + "     ! NOT ENOUGH FUEL !";
-                            richTextBox1.Text += Environment.NewLine + "The fuel will not last. We need to fill up atleast " + minimalfillAmount + "l";
-                            fillingStation.SetPrice(path[i]);
-                            Car.FillUpTheTank(fillingStation, path[i], richTextBox1, textBox1);
+                            //it is possible to travel from start to start through some cities
+                            destinationCity = city;
                         }
-                        Car.Instance.TankStatus -= neededFuel;
-                        richTextBox1.Text += Environment.NewLine + "After the road, the tank status will be " + Car.Instance.TankStatus + "l";
-                        WordAnimation();
-                        break;
-                    case Fuel.diesel:
-                        neededFuel = ((current.Distance / (double)100) + 1) * Car.Instance.Consumption;
-                        richTextBox1.Text += Environment.NewLine + "On the road we consume: " + neededFuel + "l";
-                        remaining = (int)Car.Instance.TankStatus - neededFuel;
-                        if (remaining <= 0)
+                        else
                         {
-                            double minimalfillAmount = neededFuel - (int)Car.Instance.TankStatus;
-                            richTextBox1.Text += Environment.NewLine + "     ! NOT ENOUGH FUEL !";
-                            richTextBox1.Text += Environment.NewLine + "The fuel will not last. We need to fill up atleast " + minimalfillAmount + "l";
-                            fillingStation.SetPrice(path[i]);
-                            Car.FillUpTheTank(fillingStation, path[i], richTextBox1, textBox1);
+                            output.Text += "You have already picked this city as start city." + Environment.NewLine;
                         }
-                        Car.Instance.TankStatus -= neededFuel;
-                        richTextBox1.Text += Environment.NewLine + "After the road, the tank status will be " + Car.Instance.TankStatus + "l";
-                        WordAnimation();
-                        break;
-                    case Fuel.electro:
-                        double neededKWh = ((current.Distance / (double)100) + 1) * Car.Instance.Consumption;
-                        richTextBox1.Text += Environment.NewLine + "On the road we consume: " + neededKWh + "kWh";
-                        remaining = (int)Car.Instance.TankStatus - neededKWh;
-                        if (remaining <= 0)
-                        {
-                            double minimalfillAmount = neededKWh - (int)Car.Instance.TankStatus;
-                            richTextBox1.Text += Environment.NewLine + "     ! NOT ENOUGH FUEL !";
-                            richTextBox1.Text += Environment.NewLine + "The fuel will not last. We need to fill up atleast " + minimalfillAmount + "kWh";
-                            fillingStation.SetPrice(path[i]);
-                            Car.FillUpTheTank(fillingStation, path[i], richTextBox1, textBox1);
-                        }
-                        Car.Instance.TankStatus -= neededKWh;
-                        richTextBox1.Text += Environment.NewLine + "After the road, the tank status will be " + Car.Instance.TankStatus + "kWh";
-                        WordAnimation();
-                        break;
-                    default:
-                        break;
+                    }
+                    else if (city == destinationCity)
+                    {
+                        output.Text += "You have already picked this city as destination city." + Environment.NewLine;
+                    }
+                    else if (startCity == null)
+                    {
+                        startCity = city;
+                        
+                        output.Text += "You have picked " + city.Name + " as start city." + Environment.NewLine;
+                    }
+                    else if (destinationCity == null)
+                    {
+                        destinationCity = city;
+                        
+                        output.Text += "You have picked " + city.Name + " as destination city." + Environment.NewLine;
+                    }
+                    else
+                    {
+                        output.Text += "You have already picked cities. Click \" Simulate\" to show the path or \"Reset\" if you want to show another path.";
+                    }
                 }
             }
         }
 
-        private void Simulation(object sender, EventArgs e)
+        private void DismissCity(MouseEventArgs e)
         {
-            //SIMULATION
-            //start of simulation
-            Simulation(path);
-            richTextBox1.Text += Environment.NewLine + Line();
-            richTextBox1.Text += Environment.NewLine + "You have sucessfully reached the destination!";
+            //delete the selected city
+            foreach (var city in map.Cities.Values)
+            {
+                if (city.Contains(e.X, e.Y))
+                {
+                    if (city == startCity)
+                    {
+                        output.Text += "You have deselected the start city." + Environment.NewLine;
+                        startCity = null;
+                    }
+                    else if (city == destinationCity)
+                    {
+                        output.Text += "You have deselected the destination city." + Environment.NewLine;
+                        destinationCity = null;
+                    }
+                    else
+                    {
+                        output.Text += "This city is not start or destination city." + Environment.NewLine;
+                    }
+                }
+            }
         }
 
-        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
+        private void PickCity(object sender, MouseEventArgs e)
         {
-            textBox1.Text = e.X.ToString();
-            textBox2.Text = e.Y.ToString();
+            var clicked = e.Button;
+
+            switch(clicked)
+            {
+                case MouseButtons.Left:
+                    if(ModifierKeys == Keys.Control)
+                    {
+                        AddCity(e);
+                    }
+                    else
+                    {
+                        SelectCity(e);
+                    }
+                    break;
+                case MouseButtons.Right:
+                    DismissCity(e);
+                    break;
+                default:
+                    output.Text += "Wrong mouse button." + Environment.NewLine;
+                    break;
+            }
+
+            RenderMap();
+        }
+
+        void RenderMap()
+        {
+            ResetMap();
+
+            if (startCity != null)
+            {
+                startCity.Draw(graphics, Color.Black);
+            }
+            if (destinationCity != null)
+            {
+                destinationCity.Draw(graphics, Color.Black);
+            }
+            if (cityBetween.Count > 0)
+            {
+                foreach (City c in cityBetween)
+                {
+                    c.Draw(graphics, Color.Red);
+                }
+            }
+
+            pictureBox1.Image = drawMap;
+        }
+
+        private void ResetOutput() => output.Text = "";
+
+        private void ResetMap()
+        {
+            //bitmap
+            graphics.Clear(Color.White);
+            graphics.Clear(Color.Transparent);
+            pictureBox1.BackgroundImage = Properties.Resources.rsz_map;
+            pictureBox1.Refresh();
+        }
+
+        private void ResetForm(object sender, EventArgs e)
+        {
+            //path
+            startCity = null;
+            destinationCity = null;
+            
+            foreach(City c in cityBetween)
+            {
+                cityBetween.Dequeue();
+            }
+
+            ResetOutput();
+
+            ResetMap();
+        }
+
+        private void ChangeCarSettings(object sender, EventArgs e)
+        {
+            Form carSettings = new Settings();
+            carSettings.Show();
         }
     }
 }

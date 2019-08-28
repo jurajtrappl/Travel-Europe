@@ -2,16 +2,13 @@
 {
     public class Point
     {
-        protected int x;
-        protected int y;
+        public int X;
+        public int Y;
 
         public Point(int x, int y)
         {
-            this.x = x;
-            this.y = y;
+            X = x;
+            Y = y;
         }
-
-        public int GetX() => x;
-        public int GetY() => y;
     }
 }
