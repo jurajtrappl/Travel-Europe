@@ -6,8 +6,8 @@ This program is used for calculating the travel expenses such as fuel cost, find
 
 ## Stages
 ### I. stage: Entering car parameters
-    The application starts by opening the first window. This is used to enter car parameters.
-    The main car parameters are Fuel Type, Consumption, Tank Capacity and Maximum Speed.
+   The application starts by opening the first window. This is used to enter car parameters.
+   The main car parameters are Fuel Type, Consumption, Tank Capacity and Maximum Speed.
 
 ### II. stage: Simulation
   User has to choose two cities, a starting city and a destination city. It is also possible to add cities to go through on the path
