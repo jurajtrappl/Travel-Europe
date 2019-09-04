@@ -2,7 +2,7 @@
     Semestral project for NPRG031
 # User documentation
 ## Abstract
-This program is used for calculating the travel expenses such as fuel cost, finding the shortest path between desired cities also using city in between on the path and printing the travel summary.
+This program is used for calculating the travel expenses such as fuel cost, finding the shortest path between desired cities also using city in between on the path and printing the detailed travel summary.
 
 ## Stages
 ### I. stage: Entering car parameters
