@@ -29,4 +29,10 @@ This program is used to find the shortest path between two cities and list infor
     allows you to add a city to your road, which means you’re going through that city, 
     it could be more than one city
     
+## Example
+  
+The user wants to travel from Hamburg to Bratislava. Also he / she wants to travel through Berlin and Prague.
+
+![example simulation](https://i.imgur.com/M7h8NFe.jpg)
+
 # Programmer's documentation
