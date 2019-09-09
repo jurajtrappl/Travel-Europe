@@ -20,14 +20,13 @@ This program is used to find the shortest path between two cities and list infor
   
 ### Controls
 #### Left mouse click
-    selects starting or destination city.
+    Selects starting or destination city. Black circle appears.
     
 #### Right mouse click
-    deselects any selected city
+    Deselects any selected city.
     
 #### Ctrl + right mouse click
-    allows you to add a city to your road, which means you’re going through that city, 
-    it could be more than one city
+    Allows you to add a city to your road, which means you’re going through that city. Red circle appears.
     
 ## Example
   
