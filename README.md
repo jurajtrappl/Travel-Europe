@@ -3,7 +3,7 @@
     
 # User's documentation
 ## Abstract
-This program is used to find the shortest path between two cities and list information about the trip. The user has the option to choose the cities he/she wants to travel through. First, the user enters the parameters of the car he/she wants to travel. Then the user plans the route. At the end, the user will see a detailed route overview, that includes information about the length of the trip, the length of trips between cities, the total time spent on the trip, and the fuel and cost needed.
+This program can be used to find the shortest path between two cities and list information about the trip. The user has the option to choose the cities he/she wants to travel through. First, the user enters the parameters of the car he/she wants to travel with. Then the user plans the route. In the end, the user will see a detailed route overview, that includes information about the length of the trip, the length of trips between cities, the total time spent on the trip, and the fuel and cost needed.
 
 ## Stages
 ### I. stage: Entering car parameters
@@ -13,7 +13,7 @@ When the application starts, the first window appears. The first window asks the
    
 ### II. stage: Simulation
 The user must select their start and destination city. It is also possible to add cities to go through on the path
-from the starting city to the destination city. Once the user has selected both a starting and destination city, then he/she can       proceed to the "Simulation" button. After clicking the button the detailed route overview is shown in the log. If the user wants to      change car parameters, then the user can click on the "Car settings" button. If the user wants to calculate another trip, then the user  can click "Reset" button.
+from the starting city to the destination city. Once the user has selected both a starting and destination city, then he/she can       proceed to the "Simulation" button. After clicking the button the detailed route overview is shown in the log. If the user wants to      change car parameters, then the user can click on the "Car settings" button. If the user wants to calculate another trip, then the user  can click the "Reset" button.
   
    ![main window](https://i.imgur.com/c0HX3Wr.jpg)
   
@@ -39,22 +39,26 @@ The user wants to travel from Hamburg to Bratislava. Also, he/she wants to trave
 
 ## Architecture
 The project can be split into five high-level stages:
+
 #### 1. Input
-   The data for the map is stored in text file in specific format. The format must be strict because the map is parsed by regexes.
-   The file can be segmented into three main parts, countries, cities and roads. Before every part there is a number indicated
-   how many lines are there for each part. This is the reason why in this class is used the only global variable in this project.
+The data for the map is stored in a text file in a specific format. The format must be strict because the map is parsed by regexes.
+The file can be segmented into three main parts, countries, cities and roads. Before every part, there is a number indicated
+how many lines are there for each part. This is the reason why this class has the only global variable in this project.
    
 #### 2. Map
-   The data are stored in graph data structure which represents a map. Data are located in a text file in a specific format, then they are    parsed using regexes. Map of Europe contains 21 european countries and over 400 cities overall.
+The data are stored in a graph data structure which represents a map. Data are located in a text file in a specific format, then they      are parsed using regexes. The map of Europe contains 21 European countries and over 400 cities overall.
+   
 #### 3. Car
-   Vehicle with four parameters helps providing detailed information about user defined trip. Four parameters are fuel type, tank          capacity, consumption and maximum allowed speed.
+The Vehicle with four parameters helps to provide detailed information about user-defined trip. Four parameters are fuel type, tank          capacity, consumption, and maximum allowed speed.
+   
 #### 4. Shortest path
-   Dijkstra's algorhitm is the main and the only algorhitm that is used in this project. It provides a calculation for finding the          shortest path from a starting city to a destination city.
+Dijkstra's algorithm is the main and the only algorithm that is used in this project. It provides a calculation for finding the          shortest path from a starting city to a destination city.
+   
 #### 5. Visualization
-   This stage provides graphic representation of a path, choosing the cities by clicking on the map, map itself.
-   Cities on the map remembers their position in x,y coordinates, this helps in the terms of calculating distances that are then
-   assigned to the roads between cities. The distance is calculated by using map scale and distance between coordinates. When user
-   selects city then it is highlighted by circle.
+This stage provides graphic representation of a path, choosing the cities by clicking on the map, map itself.
+Cities on the map remembers their position in x,y coordinates, this helps in the terms of calculating distances that are then
+assigned to the roads between cities. The distance is calculated by using map scale and distance between coordinates. When user
+selects city then it is highlighted by circle.
 
 ## Main classes
 #### 1. Input
@@ -94,14 +98,14 @@ Point is a simple data class that has two integer variables x, y.
 Car is represented by a single class **Car.cs**. As for design this class implements singleton design pattern. It contains methods to calculate a total fuel and fuel expenses.
 
 #### 4. Shortest path
-This stage can be divided to two parts. The first part include the algorhitm and the second parts includes the data structure, heap.
+This stage can be divided to two parts. The first part include the algorithm and the second parts includes the data structure, heap.
 When user choose more than one city for example he wants to travel from Prague to Berlin through Munchen, then the city between are stored in Queue and the path is the calculated partly.
  
-##### 4.1 Dijkstra's algorhitm
-Dijkstra's algorhitm is an algorhitm for finding the shortest path between nodes in a graph, which in this particular example represent a map. The implementation of this algorhitm is in **Dijkstra.cs**.
+##### 4.1 Dijkstra's algorithm
+Dijkstra's algorithm is an algorithm for finding the shortest path between nodes in a graph, which in this particular example represent a map. The implementation of this algorithm is in **Dijkstra.cs**.
 
-The function has one dictionary that stores previous cities of cities. It is used to rebuild the path after the algorhitm reach its end. The function returns list of cities that are in the shortest path. 
-Initialize every other city than starting city with +inf distance and insert it to a heap. Starting city has 0 distance and it is also inserted into the heap. While the heap is not empty, extract min from heap and relax edges of current min. The algorhitm checks whether destination city has been found yet or not. If yes, then we rebuild the path from the dictionary and breaks the computation. 
+The function has one dictionary that stores previous cities of cities. It is used to rebuild the path after the algorithm reach its end. The function returns list of cities that are in the shortest path. 
+Initialize every other city than starting city with +inf distance and insert it to a heap. Starting city has 0 distance and it is also inserted into the heap. While the heap is not empty, extract min from heap and relax edges of current min. The algorithm checks whether destination city has been found yet or not. If yes, then we rebuild the path from the dictionary and breaks the computation. 
 
 ##### 4.2 Heap
 For this purpose the heap implementation is adjusted so the heap is min-heap. Heap uses heap nodes that represents cities during Dijkstra's computation. Basic functions as Insert, BubbleUp, BubbleDown, DecreaseKey and ExtractMin are implemented.
@@ -110,7 +114,7 @@ For this purpose the heap implementation is adjusted so the heap is min-heap. He
 _text here_
 
 ## Data structures
-Data structures implemented in this project are C# generics such as dictionaries and lists and own heap. Dictionaries are used for storing graph information and access time then is really fast. Lists are used in computation of finding the shortest path and other similar funcionalities. Heap is used as optimization for Dijkstra's algorhitm to store the cities sorted by distances from the starting city.
+Data structures implemented in this project are C# generics such as dictionaries and lists and own heap. Dictionaries are used for storing graph information and access time then is really fast. Lists are used in computation of finding the shortest path and other similar funcionalities. Heap is used as optimization for Dijkstra's algorithm to store the cities sorted by distances from the starting city.
 
-## Algorhitms
+## Algorithms
 
