@@ -37,7 +37,7 @@ The user wants to travel from Hamburg to Bratislava. Also he / she wants to trav
 
 ## Specification breakdown
 
-### Architecture
+## Architecture
 The project can be split in a four high-level stages:
 #### 1. Input
    The data for the map is stored in text file in specific format. The format must be strict because the map is parsed by regexes.
@@ -56,7 +56,7 @@ The project can be split in a four high-level stages:
    assigned to the roads between cities. The distance is calculated by using map scale and distance between coordinates. When user
    selects city then it is highlighted by circle.
 
-### Main classes
+## Main classes
 #### 1. Input
 Input has one class - ParseMap.cs. This class contains single method - ParseInput which returns Map.
 Input file is parsed line by line using regexes _(System.Text.RegularExpressions)_.
@@ -94,8 +94,8 @@ _text here_
 #### 5. Visualization
 _text here_
 
-### Data structures
+## Data structures
 Data structures implemented in this project are C# generics such as dictionaries and lists and own heap. Dictionaries are used for storing graph information and access time then is really fast. Lists are used in computation of finding the shortest path and other similar funcionalities. Heap is used as optimization for Dijkstra's algorhitm to store the cities sorted by distances from the starting city.
 
-### Algorhitms
+## Algorhitms
 Dijkstra's algorhitm is an algorhitm for finding the shortest path between nodes in a graph, which in this particular example represent a map.
