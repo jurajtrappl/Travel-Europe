@@ -35,3 +35,33 @@ The user wants to travel from Hamburg to Bratislava. Also he / she wants to trav
 ![example simulation](https://i.imgur.com/M7h8NFe.jpg)
 
 # Programmer's documentation
+## Specification breakdown
+
+## Architecture
+The project can be split in a four high-level stages:
+### 1. Input
+   The data for the map is stored in text file in specific format. The format must be strict because the map is parsed by regexes.
+   The file can be segmented into three main parts, countries, cities and roads. Before every part there is a number indicated
+   how many lines are there for each part. This is the reason why in this class is used the only global variable in this project.
+   
+   Input regexes:
+   ```csharp
+   static readonly string Country = @"(?<CountryCode>[A-Z]*) (?<CountryName>[A-Za-z]*) (?<CurrencyCode>[A-Z]*)";
+   static readonly string City = @"(?<Name>[A-Za-z]*) (?<CountryCode>[A-Z]*) (?<XCoord>\d+) (?<YCoord>\d+)";
+   static readonly string Road = @"(?<StartCity>[A-Za-z]*) (?<DestinationCity>[A-Za-z]*) (?<MaxAllowedSpeed>\d+)";
+   ```
+   
+### 2. Map
+   The data are stored in graph data structure which represents a map. Data are located in a text file in specific format, then they are    parsed using regexes. Map of Europe contains 21 european countries and over 400 cities overall.
+### 3. Car
+   Vehicle with four parameters helps providing detailed information about user defined trip.
+### 4. Shortest path
+   Dijkstra's algorhitm is the main and the only algorhitm that is used in this project. It provides a calculation for finding the          shortest path from a starting city to a destination city.
+### 5. Visualization
+   This stage provides graphic representation of path, choosing the cities by clicking on the map, map itself.
+
+## Main classes
+
+## Technical documentation
+### Data structures
+Data structures implemented in this project are C# generics such as dictionaries and lists and own heap. Dictionaries are used for storing graph information and access time then is really fast. Lists are used in computation of finding the shortest path and other similar funcionalities. Heap is used as optimization for Dijkstra's algorhitm to store the cities sorted by distances from the starting city.
