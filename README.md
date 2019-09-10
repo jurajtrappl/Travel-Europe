@@ -42,7 +42,7 @@ The project can be split into five high-level stages:
 
 #### 1. Input
 The data for the map is stored in a text file in a specific format. The format must be strict because the map is parsed by regexes.
-The file can be segmented into three main parts, countries, cities and roads. Before every part, there is a number indicated
+The file can be segmented into three main parts, countries, cities and roads. Before every part, there is a number indicating
 how many lines are there for each part. This is the reason why this class has the only global variable in this project.
    
 #### 2. Map
@@ -56,9 +56,6 @@ Dijkstra's algorithm is the main and the only algorithm that is used in this pro
    
 #### 5. Visualization
 This stage provides a graphic representation of a path, choosing the cities by clicking on the map, map itself.
-Cities on the map remember their position in x,y coordinates, this helps in the terms of calculating distances that are then
-assigned to the roads between cities. The distance is calculated by using map scale and distance between coordinates. When a user
-selects the city then it is highlighted by a circle.
 
 ## Main classes
 #### 1. Input
@@ -111,7 +108,13 @@ Initialize every other city than the starting city with +inf distance and insert
 For this purpose, the heap implementation is adjusted so the heap is min-heap. Heap uses heap nodes that represent cities during Dijkstra's computation. Basic functions as Insert, BubbleUp, BubbleDown, DecreaseKey, ExtractMin are implemented.
 
 #### 5. Visualization
-_text here_
+This project has two forms. One is for entering car parameters, the seconde one depicts map, provides interface between map and user.
+Cities on the map remember their position in x,y coordinates, this helps in the terms of calculating distances that are then
+assigned to the roads between cities. The distance is calculated by using map scale and distance between coordinates. When a user
+selects the city then it is highlighted by a circle.
+
+##### 5.1 Selecting/deselecting cities on the map
+Each city has own hitbox that is 6px rectangle around. Whenever user click on the map, function loops through all cities and use method Contains (method in **City.cs**) which returns true/false based on if it was clicked in the hitbox or not.
 
 ## Data structures
 Data structures implemented in this project are C# generics such as dictionaries and lists and own heap. Dictionaries are used for storing graph information and access time then is really fast. Lists are used in computation of finding the shortest path and other similar functionalities. Heap is used as optimization for Dijkstra's algorithm to store the cities sorted by distances from the starting city.
