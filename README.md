@@ -58,7 +58,7 @@ The project can be split in a four high-level stages:
 
 ## Main classes
 #### 1. Input
-Input has one class - ParseMap.cs. This class contains single method - ParseInput which returns Map.
+Input has one class **ParseMap.cs**. This class contains single method - _ParseInput_ which returns Map.
 Input file is parsed line by line using regexes _(System.Text.RegularExpressions)_.
 
 Input regexes:
@@ -68,28 +68,43 @@ Input regexes:
    static readonly string Road = @"(?<StartCity>[A-Za-z]*) (?<DestinationCity>[A-Za-z]*) (?<MaxAllowedSpeed>\d+)";
    ```
 
-Global integer variable server as an iterator through the input text file. Lines are matched and stored in a MatchCollection.
-For each match in the MatchCollection function tries to match by a specific regex and gather the data, pass it to a constructor for whatever we are reading.
+Global integer variable serves as an iterator through the input text file. Lines are matched and stored in a MatchCollection.
+For each match in the MatchCollection function tries to match by a specific regex and gather the data, pass it to a constructor.
 
 #### 2. Map
 Map as a graph data structure is composed of three classes, City (node), Road (edge), Map (graph). 
-Both City and Road inherits from IDrawable interface. This interface has one method - Draw returning nothing. It is simply used to implement drawing a city or road on the map.
+Both City and Road inherits from IDrawable interface. This interface has one method _Draw_ returning nothing. It is simply used to implement drawing a city or road on the map. Apart from graph data structure classes, map also contains **Country.cs**, **Point.cs**.
 
 ##### 2.1 City
-Simple class storing all needed and important information about a city and some basic actions. The city has a name, a country, a location (Point) and each city knows its neighbours - list of roads to/from the city.
+Simple class storing all needed and important information about a city and some basic actions. The city has a name, a country, a location (**Point**) and each city knows its neighbours - list of roads to/from the city.
 
 ##### 2.2 Road
 Class representing an edge in the graph. Each road knows both cities at the ends of the road itself, maximum allowed speed, distance.
 Distance is calculated in the Road constructor by map scale and distances between coordinates of both ends.
 
 ##### 2.3 Map
-This class serves as a graph, it stores all countries and cities in dictionaries. So country or cities are easy accessible by their names.
+This class serves as a graph, it stores all countries and cities in dictionaries. Countries or cities are easy accessible by their names.
+
+##### 2.4 Country, Point
+Country is class used to hold important information that helps to build better structure for a map. Each country has a code, stores all cities that belongs to country in a list, name and currency.
+
+Point is a simple data class that has two integer variables x, y.
 
 #### 3. Car
-_text here_
+Car is represented by a single class **Car.cs**. As for design this class implements singleton design pattern. It contains methods to calculate a total fuel and fuel expenses.
 
 #### 4. Shortest path
-_text here_
+This stage can be divided to two parts. The first part include the algorhitm and the second parts includes the data structure, heap.
+When user choose more than one city for example he wants to travel from Prague to Berlin through Munchen, then the city between are stored in Queue and the path is the calculated partly.
+ 
+##### 4.1 Dijkstra's algorhitm
+Dijkstra's algorhitm is an algorhitm for finding the shortest path between nodes in a graph, which in this particular example represent a map. The implementation of this algorhitm is in **Dijkstra.cs**.
+
+The function has one dictionary that stores previous cities of cities. It is used to rebuild the path after the algorhitm reach its end. The function returns list of cities that are in the shortest path. 
+Initialize every other city than starting city with +inf distance and insert it to a heap. Starting city has 0 distance and it is also inserted into the heap. While the heap is not empty, extract min from heap and relax edges of current min. The algorhitm checks whether destination city has been found yet or not. If yes, then we rebuild the path from the dictionary and breaks the computation. 
+
+##### 4.2 Heap
+For this purpose the heap implementation is adjusted so the heap is min-heap. Heap uses heap nodes that represents cities during Dijkstra's computation. Basic functions as Insert, BubbleUp, BubbleDown, DecreaseKey and ExtractMin are implemented.
 
 #### 5. Visualization
 _text here_
@@ -98,4 +113,4 @@ _text here_
 Data structures implemented in this project are C# generics such as dictionaries and lists and own heap. Dictionaries are used for storing graph information and access time then is really fast. Lists are used in computation of finding the shortest path and other similar funcionalities. Heap is used as optimization for Dijkstra's algorhitm to store the cities sorted by distances from the starting city.
 
 ## Algorhitms
-Dijkstra's algorhitm is an algorhitm for finding the shortest path between nodes in a graph, which in this particular example represent a map.
+
