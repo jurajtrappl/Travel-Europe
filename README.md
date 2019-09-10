@@ -7,7 +7,7 @@ This program can be used to find the shortest path between two cities and list i
 
 ## Stages
 ### I. stage: Entering car parameters
-When the application starts, the first window appears. The first window asks the user for four details of the car he is planning to     travel. The required parameters are the type of fuel, fuel consumption in liters per hundred kilometers, tank capacity and maximum        permitted speed. 
+When the application starts, the first window appears. The first window asks the user for four details of the car he is planning to     travel with. The required parameters are the type of fuel, fuel consumption in liters per hundred kilometers, tank capacity and maximum        permitted speed. 
    
    ![parameter window](https://i.imgur.com/J0x7qln.jpg)
    
@@ -55,15 +55,15 @@ The Vehicle with four parameters helps to provide detailed information about use
 Dijkstra's algorithm is the main and the only algorithm that is used in this project. It provides a calculation for finding the          shortest path from a starting city to a destination city.
    
 #### 5. Visualization
-This stage provides graphic representation of a path, choosing the cities by clicking on the map, map itself.
-Cities on the map remembers their position in x,y coordinates, this helps in the terms of calculating distances that are then
-assigned to the roads between cities. The distance is calculated by using map scale and distance between coordinates. When user
-selects city then it is highlighted by circle.
+This stage provides a graphic representation of a path, choosing the cities by clicking on the map, map itself.
+Cities on the map remember their position in x,y coordinates, this helps in the terms of calculating distances that are then
+assigned to the roads between cities. The distance is calculated by using map scale and distance between coordinates. When a user
+selects the city then it is highlighted by a circle.
 
 ## Main classes
 #### 1. Input
-Input has one class **ParseMap.cs**. This class contains single method - _ParseInput_ which returns Map.
-Input file is parsed line by line using regexes _(System.Text.RegularExpressions)_.
+Input has one class **ParseMap.cs**. This class contains a single method - _ParseInput_ which returns Map.
+The Input file is parsed line by line using regexes _(System.Text.RegularExpressions)_.
 
 Input regexes:
    ```csharp
@@ -77,44 +77,41 @@ For each match in the MatchCollection function tries to match by a specific rege
 
 #### 2. Map
 Map as a graph data structure is composed of three classes, City (node), Road (edge), Map (graph). 
-Both City and Road inherits from IDrawable interface. This interface has one method _Draw_ returning nothing. It is simply used to implement drawing a city or road on the map. Apart from graph data structure classes, map also contains **Country.cs**, **Point.cs**.
+Both City and Road inherits from the IDrawable interface. This interface has one method _Draw_ returning nothing. It is simply used to implement drawing a city or road on the map. Apart from graph data structure classes, the map also contains **Country.cs**, **Point.cs**.
 
 ##### 2.1 City
-Simple class storing all needed and important information about a city and some basic actions. The city has a name, a country, a location (**Point**) and each city knows its neighbours - list of roads to/from the city.
+Simple class storing all needed and important information about a city and some basic actions. The city has a name, a country, a location (**Point**) and each city know its neighbors - a list of roads to/from the city.
 
 ##### 2.2 Road
 Class representing an edge in the graph. Each road knows both cities at the ends of the road itself, maximum allowed speed, distance.
 Distance is calculated in the Road constructor by map scale and distances between coordinates of both ends.
 
 ##### 2.3 Map
-This class serves as a graph, it stores all countries and cities in dictionaries. Countries or cities are easy accessible by their names.
+This class serves as a graph, it stores all countries and cities in dictionaries. Countries or cities are easily accessible by their names.
 
 ##### 2.4 Country, Point
-Country is class used to hold important information that helps to build better structure for a map. Each country has a code, stores all cities that belongs to country in a list, name and currency.
+The Country is class used to hold important information that helps to build a better structure for a map. Each country has a code, stores all cities that belong to a country in a list, name, currency.
 
 Point is a simple data class that has two integer variables x, y.
 
 #### 3. Car
-Car is represented by a single class **Car.cs**. As for design this class implements singleton design pattern. It contains methods to calculate a total fuel and fuel expenses.
+Car is represented by a single class **Car.cs**. As for design, this class implements a singleton design pattern. It contains methods to calculate total fuel and fuel expenses.
 
 #### 4. Shortest path
-This stage can be divided to two parts. The first part include the algorithm and the second parts includes the data structure, heap.
-When user choose more than one city for example he wants to travel from Prague to Berlin through Munchen, then the city between are stored in Queue and the path is the calculated partly.
+This stage can be divided into two parts. The first part includes the algorithm and the second part includes the data structure, heap.
+When the user chooses more than one city, for example, he wants to travel from Prague to Berlin through Munchen, then the city between are stored in Queue and the path is calculated partly.
  
 ##### 4.1 Dijkstra's algorithm
 Dijkstra's algorithm is an algorithm for finding the shortest path between nodes in a graph, which in this particular example represent a map. The implementation of this algorithm is in **Dijkstra.cs**.
 
-The function has one dictionary that stores previous cities of cities. It is used to rebuild the path after the algorithm reach its end. The function returns list of cities that are in the shortest path. 
-Initialize every other city than starting city with +inf distance and insert it to a heap. Starting city has 0 distance and it is also inserted into the heap. While the heap is not empty, extract min from heap and relax edges of current min. The algorithm checks whether destination city has been found yet or not. If yes, then we rebuild the path from the dictionary and breaks the computation. 
+The function has one dictionary that stores previous cities of cities. It is used to rebuild the path after the algorithm reaches its end. The function returns a list of cities that are in the shortest path. 
+Initialize every other city than the starting city with +inf distance and insert it to a heap. The starting city has 0 distance and it is also inserted into the heap. While the heap is not empty, extract min from heap and relax edges of current min. The algorithm checks whether the destination city has been found yet or not. If yes, then we rebuild the path from the dictionary and break the computation. 
 
 ##### 4.2 Heap
-For this purpose the heap implementation is adjusted so the heap is min-heap. Heap uses heap nodes that represents cities during Dijkstra's computation. Basic functions as Insert, BubbleUp, BubbleDown, DecreaseKey and ExtractMin are implemented.
+For this purpose, the heap implementation is adjusted so the heap is min-heap. Heap uses heap nodes that represent cities during Dijkstra's computation. Basic functions as Insert, BubbleUp, BubbleDown, DecreaseKey, ExtractMin are implemented.
 
 #### 5. Visualization
 _text here_
 
 ## Data structures
-Data structures implemented in this project are C# generics such as dictionaries and lists and own heap. Dictionaries are used for storing graph information and access time then is really fast. Lists are used in computation of finding the shortest path and other similar funcionalities. Heap is used as optimization for Dijkstra's algorithm to store the cities sorted by distances from the starting city.
-
-## Algorithms
-
+Data structures implemented in this project are C# generics such as dictionaries and lists and own heap. Dictionaries are used for storing graph information and access time then is really fast. Lists are used in computation of finding the shortest path and other similar functionalities. Heap is used as optimization for Dijkstra's algorithm to store the cities sorted by distances from the starting city.
