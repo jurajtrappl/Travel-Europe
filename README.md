@@ -3,7 +3,7 @@
     
 # User's documentation
 ## Abstract
-This program is used to find the shortest path between two cities and list information about the trip. The user has the option to choose the cities he / she wants to travel through. First, the user enters the parameters of the car he / she wants to travel. Then the user plans the route. At the end, the user will see a detailed route overview, that includes information about the length of the trip, the length of trips between cities, the total time spent on the trip, and the fuel and cost needed.
+This program is used to find the shortest path between two cities and list information about the trip. The user has the option to choose the cities he/she wants to travel through. First, the user enters the parameters of the car he/she wants to travel. Then the user plans the route. At the end, the user will see a detailed route overview, that includes information about the length of the trip, the length of trips between cities, the total time spent on the trip, and the fuel and cost needed.
 
 ## Stages
 ### I. stage: Entering car parameters
@@ -13,23 +13,23 @@ When the application starts, the first window appears. The first window asks the
    
 ### II. stage: Simulation
 The user must select their start and destination city. It is also possible to add cities to go through on the path
-from the starting city to the destination city. Once the user has selected both a starting and destination city, then he / she can       proceed to the "Simulation" button. After clicking the button the detailed route overview is shown in the log. If the user wants to      change car parameters, then the user can click on the "Car settings" button. If the user wants to calculate another trip, then the user  can click "Reset" button.
+from the starting city to the destination city. Once the user has selected both a starting and destination city, then he/she can       proceed to the "Simulation" button. After clicking the button the detailed route overview is shown in the log. If the user wants to      change car parameters, then the user can click on the "Car settings" button. If the user wants to calculate another trip, then the user  can click "Reset" button.
   
    ![main window](https://i.imgur.com/c0HX3Wr.jpg)
   
 ### Controls
 #### Left mouse click
-    Selects starting or destination city. Black circle appears.
+    Selects starting or destination city. The black circle appears.
     
 #### Right mouse click
     Deselects any selected city.
     
 #### Ctrl + right mouse click
-    Allows you to add a city to your road, which means you’re going through that city. Red circle appears.
+    It allows you to add a city to your road, which means you’re going through that city. The red circle appears.
     
 ## Example
   
-The user wants to travel from Hamburg to Bratislava. Also he / she wants to travel through Berlin and Prague.
+The user wants to travel from Hamburg to Bratislava. Also, he/she wants to travel through Berlin and Prague.
 
 ![example simulation](https://i.imgur.com/M7h8NFe.jpg)
 
@@ -38,14 +38,14 @@ The user wants to travel from Hamburg to Bratislava. Also he / she wants to trav
 ## Specification breakdown
 
 ## Architecture
-The project can be split in a four high-level stages:
+The project can be split into five high-level stages:
 #### 1. Input
    The data for the map is stored in text file in specific format. The format must be strict because the map is parsed by regexes.
    The file can be segmented into three main parts, countries, cities and roads. Before every part there is a number indicated
    how many lines are there for each part. This is the reason why in this class is used the only global variable in this project.
    
 #### 2. Map
-   The data are stored in graph data structure which represents a map. Data are located in a text file in specific format, then they are    parsed using regexes. Map of Europe contains 21 european countries and over 400 cities overall.
+   The data are stored in graph data structure which represents a map. Data are located in a text file in a specific format, then they are    parsed using regexes. Map of Europe contains 21 european countries and over 400 cities overall.
 #### 3. Car
    Vehicle with four parameters helps providing detailed information about user defined trip. Four parameters are fuel type, tank          capacity, consumption and maximum allowed speed.
 #### 4. Shortest path
