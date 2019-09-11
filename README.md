@@ -36,6 +36,7 @@ The user wants to travel from Hamburg to Bratislava. Also, he/she wants to trave
 # Programmer's documentation
 
 ## Specification breakdown
+This program is small and simple engine for calculating and showing the path on a map using Dijkstra's algorhitm. It is written in C# using Visual Studio 2017. The project is WFA application including 2 forms, first for entering user input that creates a car and the second form for simulation and overview information. Input data about map (countries, cities and roads) are written in separate text file which is then parsed using regexes.
 
 ## Architecture
 The project can be split into five high-level stages:
@@ -93,6 +94,7 @@ Point is a simple data class that has two integer variables x, y.
 
 #### 3. Car
 Car is represented by a single class **Car.cs**. As for design, this class implements a singleton design pattern. It contains methods to calculate total fuel and fuel expenses.
+The total fuel: _distance / 100 * consumption per 100l/kWh_. 
 
 #### 4. Shortest path
 This stage can be divided into two parts. The first part includes the algorithm and the second part includes the data structure, heap.
@@ -116,5 +118,14 @@ selects the city then it is highlighted by a circle.
 ##### 5.1 Selecting/deselecting cities on the map
 Each city has own hitbox that is 6px rectangle around. Whenever user click on the map, function loops through all cities and use method Contains (method in **City.cs**) which returns true/false based on if it was clicked in the hitbox or not.
 
+##### 5.2 Settings form
+The first form contains three text boxes and one menu. Each of these requires user input. Next to each text box is Error Provider component, which shows user if the input is incorrect. It is validated in try/catch block. After entering the parameters the user can proceed to the next form.
+
+##### 5.3 TravelSimulation form
+The second form, Travel Simulation form, contains PictureBox, Rich Text Box and three buttons. PictureBox has background image (map of Europe) and a bitmap. On the bitmap path is visualized, after clicking on cities circles are drawn. Rich Text box contains information about a trip, about actions made by the user. Three buttons are Reset, Car Settings and Simulation.
+    1. Reset button clears the rich text box and clears the picture box.
+    2. Car Settings opens the first form, where the user can change car parameters.
+    3. Simulation visualizes the selected path and prints overview.
+
 ## Data structures
-Data structures implemented in this project are C# generics such as dictionaries and lists and own heap. Dictionaries are used for storing graph information and access time then is really fast. Lists are used in computation of finding the shortest path and other similar functionalities. Heap is used as optimization for Dijkstra's algorithm to store the cities sorted by distances from the starting city.
+Data structures implemented in this project are C# generics such as dictionaries and lists and own heap. Dictionaries are used for storing graph information. Lists are used in computation of finding the shortest path and other similar functionalities. Heap is used as optimization for Dijkstra's algorithm to store the cities sorted by distances from the starting city.
