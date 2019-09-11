@@ -1,8 +1,10 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
+using System.Linq;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Collections.Generic;
-using System;
+
 
 namespace TravelEurope
 {
@@ -33,10 +35,6 @@ namespace TravelEurope
             output.Font = new Font("Sitka Banner", 15, FontStyle.Bold);
             output.MaxLength = 50;
 
-            //settings for refilling
-            string fuelType = (Car.Instance.FuelType == Fuel.electro) ? " kWh" : " l";
-            textBox1.Text = "0  " + fuelType;
-
             //graphics
             drawMap = new Bitmap(pictureBox1.Size.Width, pictureBox1.Size.Height);
             graphics = Graphics.FromImage(drawMap);
@@ -63,21 +61,28 @@ namespace TravelEurope
             }
         }
 
+        /// <summary>
+        /// After clicking on the "Simulation" button this function checks whether user
+        /// has selected cities. If yes, then the path is visualized and overview is printed. If not, then
+        /// it prints the problem in the rich text box.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Simulate(object sender, EventArgs e)
         {
             if(startCity == null || destinationCity == null)
             {
-                output.Text += "Pick cities first.";
+                output.Text += "Pick cities first." + Environment.NewLine;
             }
             else if (startCity != null && destinationCity == null)
             {
-                output.Text += "You have picked only starting city.";
+                output.Text += "You have picked only starting city." + Environment.NewLine;
             }
             else if (startCity == null && destinationCity != null)
             {
                 startCity = destinationCity;
                 destinationCity = null;
-                output.Text += "You have picked only starting city.";
+                output.Text += "You have picked only starting city." + Environment.NewLine;
             }
             else
             {
@@ -99,15 +104,30 @@ namespace TravelEurope
             }
         }
 
+        /// <summary>
+        /// Adds city to queue of cities that must be visited during the path from a starting city to a destination city.
+        /// For loop checks for every city if it was clicked or not.
+        /// </summary>
+        /// <param name="e"></param>
         private void AddCity(MouseEventArgs e)
         {
             foreach(var city in map.Cities.Values)
             {
                 if (city.Contains(e.X, e.Y))
+                {
                     cityBetween.Enqueue(city);
+
+                    output.Text += "You have picked " + city.Name + " as city to go through." + Environment.NewLine;
+                }
+                    
             }
         }
 
+        /// <summary>
+        /// Takes care of whether the user clicked on the city after clicking on the picturebox.
+        /// If so, it will treat some basic cases.
+        /// </summary>
+        /// <param name="e"></param>
         private void SelectCity(MouseEventArgs e)
         {
             foreach (var city in map.Cities.Values)
@@ -146,12 +166,16 @@ namespace TravelEurope
                     }
                     else
                     {
-                        output.Text += "You have already picked cities. Click \" Simulate\" to show the path or \"Reset\" if you want to show another path.";
+                        output.Text += "You have already picked cities. Click \" Simulate\" to show the path or \"Reset\" if you want to show another path." + Environment.NewLine;
                     }
                 }
             }
         }
 
+        /// <summary>
+        /// Deselects any selected city.
+        /// </summary>
+        /// <param name="e"></param>
         private void DismissCity(MouseEventArgs e)
         {
             //delete the selected city
@@ -169,6 +193,11 @@ namespace TravelEurope
                         output.Text += "You have deselected the destination city." + Environment.NewLine;
                         destinationCity = null;
                     }
+                    else if (cityBetween.Contains(city))
+                    {
+                        output.Text += "You have deselected the city to go through" + Environment.NewLine;
+                        cityBetween = new Queue<City>(cityBetween.Where(p => p != city));
+                    }
                     else
                     {
                         output.Text += "This city is not start or destination city." + Environment.NewLine;
@@ -177,6 +206,11 @@ namespace TravelEurope
             }
         }
 
+        /// <summary>
+        /// Main function that selects action based on MouseEvent + Keys.Control.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PickCity(object sender, MouseEventArgs e)
         {
             var clicked = e.Button;

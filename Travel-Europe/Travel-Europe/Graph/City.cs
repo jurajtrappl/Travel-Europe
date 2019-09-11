@@ -31,9 +31,15 @@ namespace TravelEurope
             g.DrawEllipse(new Pen(c, 5), Location.X, Location.Y, 3, 3);
         }
 
+        /// <summary>
+        /// Creates an rectangle (6px) around a city. Simulates hitbox that is used to check whether a user clicked on the city.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
         public bool Contains(int x, int y)
         {
-            Rectangle hitbox = new Rectangle(Location.X - 1, Location.Y - 1, 5, 5);
+            Rectangle hitbox = new Rectangle(Location.X - 1, Location.Y - 1, 6, 6);
 
             return hitbox.Contains(x, y);
         }

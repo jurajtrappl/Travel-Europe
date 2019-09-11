@@ -55,15 +55,51 @@ namespace TravelEurope
         /// <param name="city"></param>
         public static void CalculateFuel(RichTextBox output, List<City> path)
         {
-            int actualFuel = 0;
+            double actualFuel = 0;
 
             Currency currAtStart = new Currency(path[0].Country.Code);
 
-            int distance = 0;
             for(int i = 0; i < path.Count - 1; i++)
             {
+                City startCity = path[i];
+                City endCity = path[i + 1];
 
+                Road between = null;
+                foreach(Road r in startCity.Roads)
+                {
+                    if(r.DestinationCity == endCity)
+                    {
+                        between = r;
+                        break;
+                    }
+                }
+
+                int distance = between.Distance;
+                int maxSpeed = between.MaxAllowedSpeed;
+
+                actualFuel += Instance.Consumption * (distance / (double)100);
             }
+
+            if (Instance.FuelType == Fuel.electro)
+                output.Text += "Total fuel: " + actualFuel + "kWh." + Environment.NewLine;
+            else
+                output.Text += "Total fuel: " + actualFuel + "l." + Environment.NewLine;
+
+            double fuelCost = CalculateFuelCost(actualFuel, currAtStart);
+
+            output.Text += "The total cost of fuel is " + fuelCost + "€." + Environment.NewLine; //mena
+        }
+
+        public static double CalculateFuelCost(double fuelAmount, Currency currency)
+        {
+            double price = CalculateFuelPrice();
+            return fuelAmount * price;
+        } 
+
+        public static double CalculateFuelPrice()
+        {
+            //just for simplicity - 1,5€ is price for 1l or 1kWh
+            return 1.5;
         }
     }
 }

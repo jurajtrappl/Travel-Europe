@@ -6,7 +6,6 @@ namespace TravelEurope
     /// <summary>
     /// Data structure
     /// Type: MinHeap
-    /// Usage: O(1) ExtractMin for Dijkstra
     /// </summary>
     class Heap
     {

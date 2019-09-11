@@ -32,75 +32,154 @@ namespace TravelEurope
                     return Fuel.none;
             }
         }
-
-
+        
         private void Continue(object sender, EventArgs e)
         {
-            FormCollection existingForms = Application.OpenForms;
-
-            if (existingForms.Count == 1)
+            if (!ValidateForm())
             {
-                //for the first time
-                
-                //validate input
-                
+                MessageBox.Show("Please enter the information.");
+            }
+            else
+            {
+                Hide();
                 Form simulationForm = new TravelSimulation();
                 simulationForm.ShowDialog();
-                Close();
-            } else
-            {
                 Close();
             }
         }
 
         #region Input handling
 
-        //private bool TankCapacity()
-        //{
-        //    bool done;
+        private bool ValidateTankCapacity()
+        {
+            bool validateStatus = true;
 
-        //    bool validInput = double.TryParse(textBox2.Text, out double value);
-        //    if ((validInput && value < 0) || !validInput)
-        //    {
-        //        done = false;
-        //        MessageBox.Show("Invalid input - Tank Capacity", "Input error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //    else
-        //    {
-        //        Car.Instance.TankCapacity = value;
-        //        done = true;
-        //    }
+            if(textBox2.Text == "")
+            {
+                errorProvider1.SetError(textBox2, "Please enter a tank capacity.");
+            }
+            else
+            {
+                errorProvider1.SetError(textBox2, "");
+                try
+                {
+                    bool validInput = double.TryParse(textBox2.Text, out double value);
+                    if ((validInput && value < 0) || !validInput)
+                    {
+                        validateStatus = false;
+                        errorProvider1.SetError(textBox2, "Invalid input - Tank Capacity");
+                    }
+                    else
+                    {
+                        Car.Instance.TankCapacity = value;
+                    }
+                }
+                catch
+                {
+                    errorProvider1.SetError(textBox2, "Please enter a correct tank capacity.");
+                }
+            }
+            
+            return validateStatus;
+        }
 
-        //    return done;
-        //}
-        
-        //private bool MaxSpeed()
-        //{
-        //    bool validInput = int.TryParse(textBox4.Text, out int value);
-        //    if ((validInput && value < 0) || !validInput)
-        //    {
-        //        MessageBox.Show("Invalid input - Max Speed", "Input error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //    else
-        //    {
-        //        Car.Instance.MaxSpeed = value;
-        //    }
+        private bool ValidateMaxSpeed()
+        {
+            bool validateStatus = true;
 
-        //}
+            if(textBox4.Text == "")
+            {
+                errorProvider2.SetError(textBox4, "Please enter a max speed.");
+            }
+            else
+            {
+                errorProvider2.SetError(textBox4, "");
+                try
+                {
+                    bool validInput = int.TryParse(textBox4.Text, out int value);
+                    if ((validInput && value < 0) || !validInput)
+                    {
+                        validateStatus = false;
+                        errorProvider2.SetError(textBox4, "Invalid input - Max Speed");
+                    }
+                    else
+                    {
+                        Car.Instance.MaxSpeed = value;
+                    }
+                }
+                catch
+                {
+                    errorProvider2.SetError(textBox4, "Please enter a correct max speed");
+                }
+            }
 
-        //private bool Consumption()
-        //{
-        //    bool validInput = double.TryParse(textBox5.Text, out double value);
-        //    if ((validInput && value < 0) || !validInput)
-        //    {
-        //        MessageBox.Show("Invalid input - Consumption", "Input error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //    else
-        //    {
-        //        Car.Instance.Consumption = value;
-        //    }
-        //}
+            return validateStatus;
+        }
+
+        private bool ValidateConsumption()
+        {
+            bool validateStatus = true;
+
+            if(textBox5.Text == "")
+            {
+                errorProvider3.SetError(textBox5, "Please enter a consumption.");
+            }
+            else
+            {
+                errorProvider3.SetError(textBox5, "");
+                try
+                {
+                    bool validInput = double.TryParse(textBox5.Text, out double value);
+                    if ((validInput && value < 0) || !validInput)
+                    {
+                        validateStatus = false;
+                        errorProvider3.SetError(textBox5, "Invalid input - Consumption");
+                    }
+                    else
+                    {
+                        Car.Instance.Consumption = value;
+                    }
+                }
+                catch
+                {
+                    errorProvider3.SetError(textBox5, "Please enter a correct consumption.");
+                }
+            }
+            
+            return validateStatus;
+        }
 
         #endregion
+
+        private void textBox2_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            ValidateTankCapacity();
+        }
+
+        private void textBox4_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            ValidateMaxSpeed();
+        }
+
+        private void textBox5_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            ValidateConsumption();
+        }
+
+        private bool ValidateForm()
+        {
+            bool validTankCapacity = ValidateTankCapacity();
+            bool validMaxSpeed = ValidateMaxSpeed();
+            bool validConsumption = ValidateConsumption();
+
+            if(validTankCapacity && validMaxSpeed && validConsumption)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
